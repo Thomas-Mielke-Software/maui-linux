@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: main-linux
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3.2.0
@@ -46,4 +46,4 @@ jobs:
           assignees: rmarinho, jsuarezruiz
           reviewers: rmarinho, jsuarezruiz
           branch: housekeeping/fix-codeformatting
-          base: main
+          base: main-linux
