@@ -53,11 +53,8 @@ namespace Microsoft.Maui.Handlers
 
 		void Disconnect(WebView2 platformView)
 		{
-			if (_window is not null)
-			{
-				_window.Closed -= OnWindowClosed;
-				_window = null;
-			}
+			_window?.Closed -= OnWindowClosed;
+			_window = null;
 
 			platformView.Loaded -= OnWebViewLoaded;
 			_proxy.Disconnect(platformView);

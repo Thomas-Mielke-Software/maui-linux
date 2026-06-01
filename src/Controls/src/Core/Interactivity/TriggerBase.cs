@@ -82,14 +82,12 @@ namespace Microsoft.Maui.Controls
 
 		internal virtual void OnAttachedTo(BindableObject bindable)
 		{
-			if (Condition != null)
-				Condition.SetUp(bindable);
+			Condition?.SetUp(bindable);
 		}
 
 		internal virtual void OnDetachingFrom(BindableObject bindable)
 		{
-			if (Condition != null)
-				Condition.TearDown(bindable);
+			Condition?.TearDown(bindable);
 		}
 
 		internal virtual void OnSeal()
@@ -98,8 +96,7 @@ namespace Microsoft.Maui.Controls
 			((SealedList<TriggerAction>)ExitActions).IsReadOnly = true;
 			if (Setters != null)
 				((SealedList<Setter>)Setters).IsReadOnly = true;
-			if (Condition != null)
-				Condition.IsSealed = true;
+			Condition?.IsSealed = true;
 		}
 
 		void OnConditionChanged(BindableObject bindable, bool oldValue, bool newValue)

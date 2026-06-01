@@ -281,8 +281,7 @@ namespace Microsoft.Maui.Controls.Platform
 					var view = _element as View;
 					if (view != null)
 					{
-						if (ElementGestureRecognizers != null)
-							ElementGestureRecognizers.CollectionChanged -= _collectionChangedHandler;
+						ElementGestureRecognizers?.CollectionChanged -= _collectionChangedHandler;
 					}
 				}
 
@@ -293,8 +292,7 @@ namespace Microsoft.Maui.Controls.Platform
 					var view = _element as View;
 					if (view != null)
 					{
-						if (ElementGestureRecognizers != null)
-							ElementGestureRecognizers.CollectionChanged += _collectionChangedHandler;
+						ElementGestureRecognizers?.CollectionChanged += _collectionChangedHandler;
 					}
 				}
 			}
@@ -349,8 +347,7 @@ namespace Microsoft.Maui.Controls.Platform
 				var view = _element as View;
 				if (view != null)
 				{
-					if (ElementGestureRecognizers != null)
-						ElementGestureRecognizers.CollectionChanged -= _collectionChangedHandler;
+					ElementGestureRecognizers?.CollectionChanged -= _collectionChangedHandler;
 				}
 			}
 
@@ -382,7 +379,7 @@ namespace Microsoft.Maui.Controls.Platform
 		{
 			if (view == null)
 				return;
-			
+
 			_isPanning = true;
 
 			foreach (IPanGestureController recognizer in view.GestureRecognizers.GetGesturesFor<PanGestureRecognizer>().Where(g => g.TouchPoints == _fingers.Count))
@@ -474,7 +471,7 @@ namespace Microsoft.Maui.Controls.Platform
 				if (_fingers.Contains(id))
 					_fingers.Remove(id);
 			}
-			
+
 			SwipeComplete(true);
 			PinchComplete(true);
 		}

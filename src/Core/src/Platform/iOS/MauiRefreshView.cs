@@ -172,8 +172,7 @@ namespace Microsoft.Maui.Platform
 			set
 			{
 				base.Bounds = value;
-				if (_contentView != null)
-					_contentView.Frame = value;
+				_contentView?.Frame = value;
 			}
 		}
 

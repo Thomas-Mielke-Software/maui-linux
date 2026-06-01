@@ -45,8 +45,7 @@ namespace Microsoft.Maui.Controls.Handlers.Items
 
 		protected override void DisconnectHandler(ListViewBase platformView)
 		{
-			if (ItemsView != null)
-				ItemsView.Scrolled -= CarouselScrolled;
+			ItemsView?.Scrolled -= CarouselScrolled;
 
 			if (ListViewBase != null)
 			{
@@ -211,8 +210,7 @@ namespace Microsoft.Maui.Controls.Handlers.Items
 
 		void UpdateIsBounceEnabled()
 		{
-			if (_scrollViewer != null)
-				_scrollViewer.IsScrollInertiaEnabled = ItemsView.IsBounceEnabled;
+			_scrollViewer?.IsScrollInertiaEnabled = ItemsView.IsBounceEnabled;
 		}
 
 		void UpdateIsSwipeEnabled()
