@@ -89,10 +89,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 				e.OldElement.ItemSelected -= OnElementItemSelected;
 				e.OldElement.ScrollToRequested -= OnElementScrollToRequested;
 				((ITemplatedItemsView<Cell>)e.OldElement).TemplatedItems.CollectionChanged -= OnCollectionChanged;
-				if (Control != null)
-				{
-					Control.Loaded -= ControlOnLoaded;
-				}
+				Control?.Loaded -= ControlOnLoaded;
 			}
 
 			if (e.NewElement != null)
@@ -128,10 +125,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 				UpdateVerticalScrollBarVisibility();
 				UpdateHorizontalScrollBarVisibility();
 
-				if (Control != null)
-				{
-					Control.Loaded += ControlOnLoaded;
-				}
+				Control?.Loaded += ControlOnLoaded;
 			}
 		}
 
@@ -177,8 +171,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 			if (isStillTheSameUnderlyingItemsSource && _collectionViewSource != null)
 				return;
 
-			if (_collectionViewSource != null)
-				_collectionViewSource.Source = null;
+			_collectionViewSource?.Source = null;
 
 			_collectionViewSource = new CollectionViewSource
 			{
@@ -340,8 +333,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 					}
 
 					List.SelectionChanged -= OnControlSelectionChanged;
-					if (_collectionViewSource != null)
-						_collectionViewSource.Source = null;
+					_collectionViewSource?.Source = null;
 
 					List.DataContext = null;
 
@@ -352,11 +344,8 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 					List = null;
 				}
 
-				if (_zoom != null)
-				{
-					_zoom.ViewChangeCompleted -= OnViewChangeCompleted;
-					_zoom = null;
-				}
+				_zoom?.ViewChangeCompleted -= OnViewChangeCompleted;
+				_zoom = null;
 			}
 
 			base.Dispose(disposing);
@@ -421,8 +410,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 		{
 			bool grouping = Element.IsGroupingEnabled;
 
-			if (_collectionViewSource != null)
-				_collectionViewSource.IsSourceGrouped = grouping;
+			_collectionViewSource?.IsSourceGrouped = grouping;
 
 			var templatedItems = TemplatedItemsView.TemplatedItems;
 			if (grouping && templatedItems.ShortNames != null)
@@ -451,8 +439,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 			}
 			else
 			{
-				if (_zoom != null)
-					_zoom.CanChangeViews = false;
+				_zoom?.CanChangeViews = false;
 			}
 		}
 

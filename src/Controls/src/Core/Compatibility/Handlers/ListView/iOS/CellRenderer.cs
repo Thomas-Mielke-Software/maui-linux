@@ -140,8 +140,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 			var inpc = cell as INotifyPropertyChanged;
 			cell.ForceUpdateSizeRequested -= _onForceUpdateSizeRequested;
 
-			if (inpc != null)
-				inpc.PropertyChanged -= _onPropertyChangedEventHandler;
+			inpc?.PropertyChanged -= _onPropertyChangedEventHandler;
 
 			_onForceUpdateSizeRequested = (sender, e) =>
 			{
@@ -171,8 +170,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 			};
 
 			cell.ForceUpdateSizeRequested += _onForceUpdateSizeRequested;
-			if (inpc != null)
-				inpc.PropertyChanged += _onPropertyChangedEventHandler;
+			inpc?.PropertyChanged += _onPropertyChangedEventHandler;
 
 		}
 

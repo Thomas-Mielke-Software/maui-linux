@@ -372,7 +372,8 @@ public static class KeyboardAutoManagerScroll
 		var topBoundary = topLayoutGuide;
 		var bottomBoundary = (double)keyboardYPosition;
 
-		if (superScrollView is not null){
+		if (superScrollView is not null)
+		{
 			superScrollViewRect = superScrollView.ConvertRectToView(superScrollView.Bounds, window);
 			topBoundary = Math.Max(topBoundary, superScrollViewRect.Value.Top + TextViewDistanceFromTop);
 			bottomBoundary = Math.Min(bottomBoundary, superScrollViewRect.Value.Bottom - TextViewDistanceFromBottom);
@@ -655,8 +656,7 @@ public static class KeyboardAutoManagerScroll
 
 	static void AnimateRootView(CGRect rect)
 	{
-		if (ContainerView is not null)
-			ContainerView.Frame = rect;
+		ContainerView?.Frame = rect;
 	}
 
 	static UIScrollView? FindParentScroll(UIScrollView? view)

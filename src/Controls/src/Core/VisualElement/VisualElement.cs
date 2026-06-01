@@ -279,13 +279,15 @@ namespace Microsoft.Maui.Controls
 		public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background), typeof(Brush), typeof(VisualElement), Brush.Default,
 			propertyChanging: (bindable, oldvalue, newvalue) =>
 			{
-				if (oldvalue == null) return;
+				if (oldvalue == null)
+					return;
 
 				(bindable as VisualElement)?.StopNotifyingBackgroundChanges();
 			},
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{
-				if (newvalue == null) return;
+				if (newvalue == null)
+					return;
 
 				(bindable as VisualElement)?.NotifyBackgroundChanges();
 			});
@@ -318,7 +320,7 @@ namespace Microsoft.Maui.Controls
 				_backgroundChanged ??= (sender, e) => OnPropertyChanged(nameof(Background));
 				_backgroundProxy ??= new();
 				_backgroundProxy.Subscribe(background, _backgroundChanged);
-							
+
 				OnParentResourcesChanged(this.GetMergedResources());
 				((IElementDefinition)this).AddResourcesChangedListener(background.OnParentResourcesChanged);
 			}
@@ -2240,8 +2242,7 @@ namespace Microsoft.Maui.Controls
 
 			if (_unloaded is null && _loaded is null)
 			{
-				if (newWindow is not null)
-					newWindow.HandlerChanged -= OnWindowHandlerChanged;
+				newWindow?.HandlerChanged -= OnWindowHandlerChanged;
 
 #if PLATFORM
 				_loadedUnloadedToken?.Dispose();
@@ -2266,8 +2267,7 @@ namespace Microsoft.Maui.Controls
 
 			if (!_watchingPlatformLoaded)
 			{
-				if (newWindow is not null)
-					newWindow.HandlerChanged += OnWindowHandlerChanged;
+				newWindow?.HandlerChanged += OnWindowHandlerChanged;
 
 				_watchingPlatformLoaded = true;
 			}

@@ -38,8 +38,7 @@ namespace Microsoft.Maui.Platform
 
 				_maskLayer = value;
 
-				if (layer is not null)
-					layer.Mask = value;
+				layer?.Mask = value;
 			}
 		}
 
@@ -55,8 +54,7 @@ namespace Microsoft.Maui.Platform
 
 				_backgroundMaskLayer = value;
 
-				if (backgroundLayer is not null)
-					backgroundLayer.Mask = value;
+				backgroundLayer?.Mask = value;
 			}
 		}
 
@@ -88,17 +86,13 @@ namespace Microsoft.Maui.Platform
 
 			child.Frame = Bounds;
 
-			if (MaskLayer is not null)
-				MaskLayer.Frame = Bounds;
+			MaskLayer?.Frame = Bounds;
 
-			if (BackgroundMaskLayer is not null)
-				BackgroundMaskLayer.Frame = Bounds;
+			BackgroundMaskLayer?.Frame = Bounds;
 
-			if (ShadowLayer is not null)
-				ShadowLayer.Frame = Bounds;
+			ShadowLayer?.Frame = Bounds;
 
-			if (_borderView is not null)
-				_borderView.Frame = Bounds;
+			_borderView?.Frame = Bounds;
 
 			SetClip();
 			SetShadow();

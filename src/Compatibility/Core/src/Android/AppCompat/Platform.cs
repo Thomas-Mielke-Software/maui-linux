@@ -35,8 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{
 				var view = bindable as VisualElement;
-				if (view != null)
-					view.IsPlatformEnabled = newvalue != null;
+				view?.IsPlatformEnabled = newvalue != null;
 
 				if (bindable is IView mauiView)
 				{
@@ -671,11 +670,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 						_modal = null;
 					}
 
-					if (_backgroundView != null)
-					{
-						_backgroundView.Dispose();
-						_backgroundView = null;
-					}
+					_backgroundView?.Dispose();
+					_backgroundView = null;
 				}
 
 				_disposed = true;

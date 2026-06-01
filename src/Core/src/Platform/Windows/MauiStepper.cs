@@ -99,12 +99,10 @@ namespace Microsoft.Maui.Platform
 			base.OnApplyTemplate();
 
 			_plus = GetTemplateChild("Plus") as Button;
-			if (_plus != null)
-				_plus.Click += OnPlusClicked;
+			_plus?.Click += OnPlusClicked;
 
 			_minus = GetTemplateChild("Minus") as Button;
-			if (_minus != null)
-				_minus.Click += OnMinusClicked;
+			_minus?.Click += OnMinusClicked;
 
 			UpdateEnabled(Value);
 			UpdateButtonBackground();
@@ -210,10 +208,8 @@ namespace Microsoft.Maui.Platform
 
 		void UpdateButtonBackground()
 		{
-			if (_minus != null)
-				_minus.Background = ButtonBackground;
-			if (_plus != null)
-				_plus.Background = ButtonBackground;
+			_minus?.Background = ButtonBackground;
+			_plus?.Background = ButtonBackground;
 		}
 
 		void UpdateButtonBackgroundColor(Color value)

@@ -116,8 +116,7 @@ namespace Microsoft.Maui.Controls.Handlers.Compatibility
 			cell.DetailTextLabel.Enabled = switchCell.IsEnabled;
 #pragma warning restore CA1416, CA1422
 			var uiSwitch = cell.AccessoryView as UISwitch;
-			if (uiSwitch != null)
-				uiSwitch.Enabled = switchCell.IsEnabled;
+			uiSwitch?.Enabled = switchCell.IsEnabled;
 		}
 
 		void UpdateOnColor(CellTableViewCell cell, SwitchCell switchCell)

@@ -80,8 +80,7 @@ namespace Microsoft.Maui
 		/// </summary>
 		void DeinitializePlatformDependencies()
 		{
-			if (_frame != null)
-				_frame.Navigating -= FrameNavigating;
+			_frame?.Navigating -= FrameNavigating;
 			if (_platformElement != null)
 			{
 				_platformElement.Tapped -= ViewTapped;
@@ -91,8 +90,7 @@ namespace Microsoft.Maui
 			{
 				_graphicsView.Tapped -= ViewTapped;
 				_graphicsView.PointerMoved -= PointerMoved;
-				if (_panel != null)
-					_panel.RemoveOverlay(_graphicsView);
+				_panel?.RemoveOverlay(_graphicsView);
 				_graphicsView = null;
 			}
 			IsPlatformViewInitialized = false;
@@ -139,8 +137,7 @@ namespace Microsoft.Maui
 
 		partial void OnDisableUITouchEventPassthroughSet()
 		{
-			if (_graphicsView != null)
-				_graphicsView.IsHitTestVisible = DisableUITouchEventPassthrough;
+			_graphicsView?.IsHitTestVisible = DisableUITouchEventPassthrough;
 		}
 	}
 }

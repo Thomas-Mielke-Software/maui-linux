@@ -47,12 +47,10 @@ namespace Microsoft.Maui.Platform
 			get => _toolbar;
 			set
 			{
-				if (_toolbar != null)
-					_toolbar.SetMenuBar(null);
+				_toolbar?.SetMenuBar(null);
 
 				_toolbar = value;
-				if (NavigationViewControl != null)
-					NavigationViewControl.Toolbar = Toolbar;
+				NavigationViewControl?.Toolbar = Toolbar;
 
 				_toolbar?.SetMenuBar(MenuBar);
 			}
@@ -192,8 +190,7 @@ namespace Microsoft.Maui.Platform
 		{
 			LoadAppTitleBarControls();
 
-			if (AppTitleBarContentControl != null)
-				AppTitleBarContentControl.Loaded -= OnAppTitleBarContentControlLoaded;
+			AppTitleBarContentControl?.Loaded -= OnAppTitleBarContentControlLoaded;
 		}
 
 		void UpdateRootNavigationViewMargins(double margin)

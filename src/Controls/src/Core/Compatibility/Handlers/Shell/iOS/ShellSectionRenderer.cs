@@ -226,8 +226,7 @@ namespace Microsoft.Maui.Controls.Platform.Compatibility
 		{
 			(_renderer as IDisconnectable)?.Disconnect();
 
-			if (_displayedPage != null)
-				_displayedPage.PropertyChanged -= OnDisplayedPagePropertyChanged;
+			_displayedPage?.PropertyChanged -= OnDisplayedPagePropertyChanged;
 
 			if (_shellSection != null)
 			{
@@ -316,10 +315,7 @@ namespace Microsoft.Maui.Controls.Platform.Compatibility
 			if (_displayedPage == page)
 				return;
 
-			if (_displayedPage != null)
-			{
-				_displayedPage.PropertyChanged -= OnDisplayedPagePropertyChanged;
-			}
+			_displayedPage?.PropertyChanged -= OnDisplayedPagePropertyChanged;
 
 			_displayedPage = page;
 
@@ -511,10 +507,7 @@ namespace Microsoft.Maui.Controls.Platform.Compatibility
 
 
 			var renderer = page.Handler;
-			if (renderer != null)
-			{
-				renderer.DisconnectHandler();
-			}
+			renderer?.DisconnectHandler();
 		}
 
 		Element ElementForViewController(UIViewController viewController)
@@ -714,9 +707,9 @@ namespace Microsoft.Maui.Controls.Platform.Compatibility
 					source.TrySetResult(true);
 					tasks.Remove(viewController);
 				}
-				else if (popTask != null)
+				else
 				{
-					popTask.TrySetResult(true);
+					popTask?.TrySetResult(true);
 				}
 			}
 
